@@ -1,0 +1,17 @@
+</br>
+</br>
+<section id='comments'>
+        <%= link_to 'Back to post', posts_path %> 
+		<% for post in @posts %>
+            <div class='comment'>
+                </br>
+                </br>
+                    <h3>The other night...</h3>
+                    <h1><%= post.body %></h1>
+                    <h3>And so I could not close.</h3>
+                    <%= '(submitted ' + time_ago_in_words(post.created_at) + ' ago)' %>
+                    <%= link_to 'Delete', post, confirm: 'Are you sure?', method: :delete %>
+            </div>
+ 		<%end%>
+
+</section>

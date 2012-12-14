@@ -1,0 +1,29 @@
+
+<%= link_to 'Approve Posts', posts_approve_path %> |
+<%= link_to 'Top Rated', posts_path({:top => 1}) %> |
+<%= link_to 'Newest', posts_path() %>
+
+<!-- 
+<%= link_to 'Share Your Story', new_post_path %>
+ -->
+
+<%= render 'form' %>
+
+<%= render :partial => 'post', :collection => @posts %>
+
+<br />
+
+<% if @posts.length == 10 %>
+    <%= link_to "Next", posts_path({:page => @next_page, :top => @top}) %>
+<% end %>
+
+<% if @page > 1 %>
+    <%= link_to "Previous", posts_path({:page => @previous_page, :top => @top}), :class => 'lol' %>
+<% end %>
+
+
+
+
+
+
+

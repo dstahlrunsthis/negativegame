@@ -1,0 +1,24 @@
+<h3>The other night</h3>
+    <%= post.body %>
+<h3>And so I could not close.</h3>
+<p>
+    <% if post.likes==0 %>
+        Amount of Negative Game: <%= post.likes %>
+    <%else%>
+        Amount of Negative Game: -<%= post.likes %>
+    <%end%>
+
+        Bad Luck: <%= post.dislikes %>
+</p>
+
+<%= '(submitted ' + time_ago_in_words(post.created_at) + ' ago)' %>
+<% unless liked_posts[post.id.to_s] %> 
+    <%= link_to '-1 for Negative Game |', like_post_path(post), method: :put%>
+    <%= link_to 'You just have bad luck', dislike_post_path(post), method: :put%> 
+<% end %>
+<% if liked_posts[post.id.to_s] == 'like' %>
+    You liked this
+<% elsif liked_posts[post.id.to_s] == 'dislike' %>
+    You disliked this
+<% end %>
+<br /><br />
